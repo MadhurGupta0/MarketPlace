@@ -1,0 +1,53 @@
+{%extends 'base.html' %}
+{% load static %}
+{%block title%}
+Dashboard
+{% endblock%}
+{%block content%}
+<a class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-2xl px-4 " href="{% url 'index' %}">
+				Dashboard
+			</a>
+  <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl w-full">
+      {% if not item %}
+       <h2 class="mb-12 text-2xl text-center">My items</h2>
+       <div class="md:grid md: grid-cols-3  gap-6 rounded-xl">
+           {%for item in items%}
+               <div class="w-full  max-w-sm mx-auto my-9 bg-white rounded-xl overflow-hidden hover:grow hover:shadow-lg">
+                   <a href="{% url 'detail' item.id %}" class="h-full w-full">
+                       <div >
+                           {% if item.image %}
+       <img src="{{ item.image.url }}" class="rounded-t-xl">
+       {% else %}
+       <img src="{% static 'profile/images/Screenshot 2024-04-26 232950.png' %}" class="rounded-t-xl">
+       {% endif %}
+
+                       </div>
+                       <div class="p-6 bg-white rounded-b-xl">
+                           <h2 class="text-2xl">{{item.name}}</h2>
+                           <p class="text-gray-500">price:{{item.price}}</p>
+                       </div>
+                   </a>
+               </div>
+           {% endfor%}
+
+
+       </div>
+      {%endif%}
+      <div class="bg-gray-100 grid gap-2 sm:grid sm:grid-cols-4 md:gap-6 rounded-xl py-10">
+
+       <a class="invisible   "></a>
+       <a href="{%url 'new'%}" class=" text-center inline px-6 py-3 md:text-lg text-sm  font-semibold bg-green-500 hover:bg-green-700 text-white rounded-xl">
+            Add New Item
+       </a>
+
+       <a href="{%url 'logout'%}" class=" text-center inline px-6 py-3 text-sm md:text-lg  font-semibold bg-red-500 text-white rounded-xl">
+            Logout
+       </a>
+          <a class=" invisible  "></a>
+          </div>
+              </div>
+
+
+
+
+{% endblock %}

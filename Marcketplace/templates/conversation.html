@@ -1,0 +1,24 @@
+{%extends 'base.html' %}
+{%block title%}
+Conversation
+{% endblock%}
+{%block content%}
+<h1 class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-2xl px-4 py-4" >Contact</h1>
+<div class="rounded-xl bg-gray-100 px-4 py-4 w-full">
+ <form method="post" action="." class="py-4 px-4">
+    {% csrf_token %}
+    <div class="space-y-4">
+        {{form.as_p}}
+    </div>
+     {% if form.errors or form.non_field_errors %}
+        <div class="mb-3 p-6 bg-red-100 rounded-xl">
+            {% for field in form %}
+                <p class="mb-3">{{field.errors}}</p>
+            {% endfor %}
+            {{form.non_field_errors}}
+        </div>
+    {% endif %}
+    <button class="mt-6 py-4 px-8 text-lg bg-green-500 hover:bg-green-700 rounded-xl text-white">Send</button>
+</form>
+ </div>
+{% endblock %}

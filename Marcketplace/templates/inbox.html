@@ -1,0 +1,31 @@
+{%extends 'base.html' %}
+
+{%block title%}
+Inbox
+{% endblock%}
+{%block content%}
+<h1 class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 px-4 text-2xl py-5">Inbox </h1>
+<div class="space-y-6 w-full px-4">
+
+
+{% for conversation in conversations %}
+    <a href="{%url 'messages' conversation.id %}">
+    <div class="flex p-6 bg-gray-100 rounded-lg ">
+        <div class="pr-6">
+        <img class="w-20  rounded-full" src="{{conversation.item.image.url}}" alt="user photo">
+        <div class="ml-3">
+            {% for member in conversation.members.all %}
+            {% if member != request.user%}
+            <p class="mb-4"><strong>{{member.username}}</strong> |{{conversation.modified_at}}</p>
+            <p>{{conversation.item.name}}</p>
+            {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+    </div>
+ </a>
+{% endfor %}
+</div>
+
+{% endblock%}

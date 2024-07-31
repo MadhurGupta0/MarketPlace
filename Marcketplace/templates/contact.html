@@ -1,0 +1,39 @@
+{%extends 'base.html' %}
+
+{%block title%}
+Contact
+{% endblock%}
+{%block content%}
+<h1 class=" uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl px-4 "> Contact For FeedBack </h1>
+
+ <section id="contact" class=" w-full py-4">
+      <div class="bg-gray-100 px-4 py-4">
+            <form action="https://api.web3forms.com/submit" method="POST" class="">
+              <input type="hidden" name="access_key" value="9f64f10b-9e7a-40e5-b7e4-dd8ba2dc56ed">
+              <div class="row rounded-xl w-full">
+                <div class="col-md-6 form-group">
+                    <h3 class="font-semibold py-2 text-lg px-2 py-2" >Name</h3>
+                  <input type="text" name="name" class="form-control px-2 py-2 rounded-xl w-full" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                    <h3 class="font-semibold py-2 text-lg px-2 py-2" >Email</h3>
+                  <input type="email" class="form-control rounded-xl w-full px-2 py-2" name="email" id="email" placeholder="Your Email" required>
+                </div>
+              </div>
+              <div class="form-group rounded-xl w-full mt-3">
+                  <h3 class="font-semibold py-2 text-lg px-2 py-2" >Subject</h3>
+                <input type="text" class="form-control w-full px-2 py-2" name="subject" id="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group rounded-xl w-full mt-3 py-2">
+                 <h3 class="font-semibold py-2 text-lg px-2 py-2" >Message</h3>
+                <textarea class="form-control w-full px-2 py-2" name="message" rows="5" placeholder="Message" required></textarea>
+              </div>
+              <div class=" text-center px-6 py-3 md:text-lg text-sm  font-semibold bg-green-500 hover:bg-green-700 text-white rounded-xl"><button type="submit">Send Message</button></div>
+            </form>
+
+          </div>
+
+
+      </div>
+    </section><!-- End Contact Section -->
+{% endblock %}
